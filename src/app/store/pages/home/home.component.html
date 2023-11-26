@@ -1,11 +1,8 @@
-<mat-drawer-container
-  [autosize]="false"
-  class="min-h-full max-w-7xl mx-auto border-x"
->
-  <mat-drawer mode="side" opened class="p-6">
+<mat-sidenav-container [autosize]="true" class="min-h-full max-w-7xl mx-auto">
+  <mat-sidenav mode="side" opened class="p-6">
     <app-filters (showCategory)="onShowCategory($event)"></app-filters>
-  </mat-drawer>
-  <mat-drawer-content class="p-6">
+  </mat-sidenav>
+  <mat-sidenav-content class="p-6 border-x min-h-screen">
     <app-products-header
       (columsCountChange)="onColumnsCountChange($event)"
     ></app-products-header>
@@ -38,14 +35,13 @@
         <app-product-box
           class="w-full"
           [fullWidthMode]="cols === 1"
-        ></app-product-box>
-      </mat-grid-tile>
-      <mat-grid-tile>
+        ></app-product-box> </mat-grid-tile
+      ><mat-grid-tile>
         <app-product-box
           class="w-full"
           [fullWidthMode]="cols === 1"
         ></app-product-box>
       </mat-grid-tile>
     </mat-grid-list>
-  </mat-drawer-content>
-</mat-drawer-container>
+  </mat-sidenav-content>
+</mat-sidenav-container>
