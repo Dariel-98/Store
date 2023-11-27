@@ -1,5 +1,5 @@
 <mat-card *ngIf="cart.items.length" class="max-w-7xl mx-auto">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-full">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="product">
       <th mat-header-cell *matHeaderCellDef>Product</th>
       <td mat-cell *matCellDef="let element">
@@ -13,7 +13,12 @@
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Name</th>
       <td mat-cell *matCellDef="let element">
-        <span class="truncate max-w-xs block">{{ element.name }}</span>
+        <div class="overflow-auto">
+          <span
+            class="w-8 sm:w-16 md:w-24 lg:w-32 xl:w-48 truncate hover:whitespace-normal max-w-xs block"
+            >{{ element.name }}</span
+          >
+        </div>
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
