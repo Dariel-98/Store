@@ -8,8 +8,9 @@ export class ProductsHeaderComponent {
   @Output() columsCountChange = new EventEmitter<number>();
   @Output() itemsCountChange = new EventEmitter<number>();
   @Output() sortChange = new EventEmitter<string>();
+  @Output() toggleSidenav = new EventEmitter<void>();
 
-  sort: string = 'desc';
+  sort: string = 'descending';
   itemsShowCount: number = 12;
 
   onSortUpdated(newSort: string): void {

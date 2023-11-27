@@ -7,8 +7,9 @@
       role="listitem"
       *ngFor="let category of categories"
       (click)="onShowCategory(category)"
+      class="divide-y divide-slate-200"
     >
-      {{ category }}
+      {{ category | titlecase }}
     </mat-list-item>
   </mat-action-list>
 </mat-expansion-panel>

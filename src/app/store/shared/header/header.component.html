@@ -1,5 +1,6 @@
 <mat-toolbar class="mx-w-7xl mx-auto border-x justify-between">
-  <a routerLink="home">The store</a>
+  <a routerLink="home">Lola's Shop</a>
+
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon
       [matBadge]="itemsQuantity"
@@ -8,7 +9,7 @@
       >shopping_cart</mat-icon
     >
   </button>
-  <mat-menu #menu="matMenu">
+  <mat-menu #menu="matMenu" class="text-white">
     <div class="p-3 divide-y divide-solid">
       <div class="pb-3 flex justify-between">
         <span class="mr-16">{{ itemsQuantity }} Items</span>

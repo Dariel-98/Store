@@ -3,6 +3,7 @@ import { CartService } from '../../services/cart.service';
 import { Product } from '../../interfaces/product.interface';
 import { Subscription } from 'rxjs';
 import { StoreService } from '../../services/store.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 const ROWS_HEIGHT: { [id: number]: number } = { 1: 400, 3: 335, 4: 350 };
 
@@ -21,11 +22,21 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
     private cartService: CartService,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
     this.getProducts();
+
+    this.breakpointObserver
+      .observe([
+        Breakpoints.XSmall,
+        Breakpoints.Small,
+        Breakpoints.Medium,
+        Breakpoints.Large,
+      ])
+      .subscribe(() => {});
   }
 
   getProducts(): void {
@@ -62,6 +73,18 @@ export class HomeComponent implements OnInit, OnDestroy {
   onSortChange(newSort: string): void {
     this.sort = newSort;
     this.getProducts();
+  }
+
+  calculateCols(): number {
+    if (this.breakpointObserver.isMatched(Breakpoints.XSmall)) {
+      return 1; // Una columna para pantallas extra pequeñas
+    } else if (this.breakpointObserver.isMatched(Breakpoints.Small)) {
+      return 1; // Una columna para pantallas pequeñas
+    } else if (this.breakpointObserver.isMatched(Breakpoints.Medium)) {
+      return 2; // Dos columnas para pantallas medianas
+    } else {
+      return 3; // Tres columnas para pantallas grandes
+    }
   }
 
   ngOnDestroy(): void {
