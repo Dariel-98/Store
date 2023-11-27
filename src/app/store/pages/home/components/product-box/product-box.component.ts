@@ -7,14 +7,7 @@ import { Product } from 'src/app/store/interfaces/product.interface';
 })
 export class ProductBoxComponent {
   @Input() fullWidthMode = false;
-  product: Product | undefined = {
-    id: 1,
-    title: 'Sneakers',
-    price: 150,
-    category: 'shoes',
-    description: 'Description',
-    image: 'https://fakeimg.pl/150x150',
-  };
+  @Input() product: Product | undefined;
 
   @Output() addToCart = new EventEmitter();
 
