@@ -1,4 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterContentChecked,
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { Product } from '../../interfaces/product.interface';
 import { Subscription } from 'rxjs';
@@ -20,11 +28,20 @@ export class HomeComponent implements OnInit, OnDestroy {
   count: string = '12';
   productsSubscription: Subscription | undefined;
 
+  openSidenav: boolean = false;
+
   constructor(
     private cartService: CartService,
     private storeService: StoreService,
     private breakpointObserver: BreakpointObserver
-  ) {}
+  ) {
+    if (this.openSidenav === true) {
+      setInterval(() => {
+        this.openSidenav = !this.openSidenav;
+      }, 10);
+      console.log('Constructor');
+    }
+  }
 
   ngOnInit(): void {
     this.getProducts();
@@ -91,5 +108,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (this.productsSubscription) {
       this.productsSubscription.unsubscribe();
     }
+  }
+
+  toggleSidenav() {
+    this.openSidenav = !this.openSidenav;
+    setTimeout(() => {
+      this.openSidenav = !this.openSidenav;
+    }, 4000);
   }
 }

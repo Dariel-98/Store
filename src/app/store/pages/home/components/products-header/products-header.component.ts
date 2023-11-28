@@ -10,6 +10,8 @@ export class ProductsHeaderComponent {
   @Output() sortChange = new EventEmitter<string>();
   @Output() toggleSidenav = new EventEmitter<void>();
 
+  @Output() sidenavToggle: EventEmitter<string> = new EventEmitter<string>();
+
   sort: string = 'descending';
   itemsShowCount: number = 12;
 
@@ -23,5 +25,10 @@ export class ProductsHeaderComponent {
   }
   onClomunsUpdated(colsNum: number): void {
     this.columsCountChange.emit(colsNum);
+  }
+
+  onToggleSidenav(): void {
+    this.sidenavToggle.emit('sidenav.toggle()');
+    console.log('evento emitido');
   }
 }

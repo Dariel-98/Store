@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Cart, CartItem } from '../../interfaces/cart.interface';
 import { CartService } from '../../services/cart.service';
 

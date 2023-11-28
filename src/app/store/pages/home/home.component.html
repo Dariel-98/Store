@@ -2,7 +2,7 @@
   [autosize]="true"
   class="min-h-full max-w-7xl mx-auto border-x"
 >
-  <mat-sidenav #sidenav class="p-0 flex">
+  <mat-sidenav sidenav [opened]="openSidenav" class="p-0 flex">
     <app-filters
       class="mx-5"
       (showCategory)="onShowCategory($event)"
@@ -10,15 +10,15 @@
   </mat-sidenav>
   <mat-sidenav-content class="p-6 border-x min-h-screen">
     <div class="flex justify-between">
-      <button class="text-lg m-2" (click)="sidenav.toggle()" mat-button>
+      <!-- <button class="text-lg m-2" (click)="sidenav.toggle()" mat-button>
         Menu
         <mat-icon class="block">menu</mat-icon>
-      </button>
+      </button> -->
       <app-products-header
         (itemsCountChange)="onItemsCountChange($event)"
         (columsCountChange)="onColumnsCountChange($event)"
         (sortChange)="onSortChange($event)"
-        class=""
+        (sidenavToggle)="toggleSidenav()"
       >
       </app-products-header>
     </div>
